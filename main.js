@@ -32,8 +32,8 @@ function loop() {
   }
 
   if (ID % 180 == 0) {
-    const note = Math.floor(Math.random() * 7);
-    coins.push(new Coin(note));
+    const noteIndex = Math.floor(Math.random() * 7);
+    coins.push(new Coin(noteIndex));
   }
 
   note.update();
