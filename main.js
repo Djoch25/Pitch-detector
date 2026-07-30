@@ -59,7 +59,7 @@ function loop() {
 
   note.draw(ctx);
 
-  ctx.fillText(freqToMidi(currentPitch), 20, 20);
+  ctx.fillText(freqToMidi(currentPitch), 20, 50);
 }
 
 loop();
