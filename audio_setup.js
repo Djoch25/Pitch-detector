@@ -13,7 +13,7 @@ async function startAudio() {
   console.log("prima del caricamento");
 
   await audioContext.audioWorklet.addModule(
-    "pitch_processor.js?v2"
+    "pitch_processor.js?v3"
   );
 
   console.log("dopo il caricamento");
