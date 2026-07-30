@@ -28,7 +28,7 @@ function loop() {
   }
   
   if (ID % 8 == 0) {
-    if (midi > 0) {
+    if (midi > 47 && midi < 65) {
       midiRects.push(new MidiRect(midi));
     }
   }
@@ -51,8 +51,8 @@ class MidiRect {
     this.midi = midi;
 
     this.x = 500;
-    this.y = 7 * SIZE;
-    this.w = 10;
+    this.y = (64 - midi) * SIZE;
+    this.w = 20;
     this.h = SIZE;
     this.xVel = -1;
   }
