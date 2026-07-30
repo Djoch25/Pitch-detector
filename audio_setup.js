@@ -10,7 +10,7 @@ async function startAudio() {
   audioContext = new AudioContext();
   sampleRate = audioContext.sampleRate;
 
-  console.log("prima del caricamento");
+  console.log("prima del caricamento ciao");
 
   await audioContext.audioWorklet.addModule(
     "pitch_processor.js?v3"
