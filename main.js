@@ -29,6 +29,8 @@ function loop() {
   const newTime = performance.now();
   const t = newTime - time;
   time = newTime;
+  console.log(currentPitch);
+  console.log(currentPitch);
 
   for (let i = coins.length - 1; i >= 0; i--) {
     if (coins[i].offscreen()) coins.splice(i, 1);
