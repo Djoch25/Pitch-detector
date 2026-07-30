@@ -39,7 +39,7 @@ function loop() {
 
   note.update();
 
-  const midi = freqToMidi(currentPitch);
+  const midi = currentPitch;
   switch(midi) {
   case 60: note.move(0); break;
   case 62: note.move(1); break;
@@ -59,7 +59,7 @@ function loop() {
 
   note.draw(ctx);
 
-  ctx.fillText(freqToMidi(currentPitch), 20, 50);
+  ctx.fillText(midi, 20, 50);
 }
 
 loop();
