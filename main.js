@@ -26,7 +26,6 @@ let time = performance.now();
 
 function loop() {
   ID = requestAnimationFrame(loop);
-  console.log(currentPitch, frequency);
 
   for (let i = coins.length - 1; i >= 0; i--) {
     if (coins[i].offscreen()) coins.splice(i, 1);
@@ -40,6 +39,7 @@ function loop() {
   note.update();
 
   const midi = currentPitch;
+  console.log(midi);
   switch(midi) {
   case 60: note.move(0); break;
   case 62: note.move(1); break;
