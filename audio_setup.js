@@ -29,8 +29,8 @@ async function startAudio() {
   console.log("nodo creato");
 
   workletNode.port.onmessage = (event) => {
-    const freq = event.data.frequency;
-    currentPitch = freqToMidi(freq);
+    frequency = event.data.frequency;
+    currentPitch = freqToMidi(frequency);
 };
 
 
