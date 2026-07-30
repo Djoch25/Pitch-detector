@@ -26,9 +26,7 @@ let time = performance.now();
 
 function loop() {
   ID = requestAnimationFrame(loop);
-  const nextTime = performance.now();
-  console.log(nextTime - time);
-  time = nextTime;
+  console.log(currentPitch);
 
   for (let i = coins.length - 1; i >= 0; i--) {
     if (coins[i].offscreen()) coins.splice(i, 1);
