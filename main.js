@@ -51,7 +51,7 @@ class MidiRect {
     this.midi = midi;
 
     this.x = 500;
-    this.y = 55 * SIZE;
+    this.y = 7 * SIZE;
     this.w = 10;
     this.h = SIZE;
     this.xVel = -1;
