@@ -29,9 +29,12 @@ function loop() {
   
   if (ID % 8 == 0) {
     if (midi > 0) {
-      midiRects.push(new midiRect(midi));
+      midiRects.push(new MidiRect(midi));
     }
   }
+
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, cnv.width, cnv.height);
 
   for (rect of midiRects) {
     rect.update();
@@ -42,3 +45,26 @@ function loop() {
 }
 
 loop();
+
+class MidiRect {
+  constructor(midi) {
+    this.midi = midi;
+
+    this.x = 500;
+    this.y = (64 + 48 - this.midi) * SIZE;
+    this.w = 10;
+    this.h = SIZE;
+    this.xVel = -1;
+  }
+
+  offscreen() {
+    return this.x < 0;
+  }
+  update() {
+    this.x += this.xVel;
+  }
+  draw(ctx) {
+    ctx.fillStyle = "#ff0000";
+    ctx.fillRect(this.x, this.y, this.w, this.h);
+  }
+}
