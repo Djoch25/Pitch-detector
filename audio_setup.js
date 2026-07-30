@@ -41,3 +41,19 @@ async function startAudio() {
 
 
 startAudio();
+
+const freqToMidi = (f) => {
+    return Math.floor(Math.log2(f / 440) * 12) + 69;
+}
+
+const freqToNote = (freq) => {
+  const midi = Math.floor(Math.log2(freq / 440) * 12) + 69;
+
+  const okt = Math.floor(midi / 12);
+  const noteIndex = midi - okt * 12;
+
+  const notePool = ["DO", "DO#", "RE", "RE#", "MI", "FA", "FA#", "SOL", "SOL#", "LA", "LA#", "SI"];
+  
+  return notePool[noteIndex] + okt;
+}
+
