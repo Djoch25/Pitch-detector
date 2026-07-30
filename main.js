@@ -1,68 +1,42 @@
 const cnv = document.createElement("canvas");
 const ctx = cnv.getContext("2d");
 cnv.width = 1300;
-cnv.height = 500;
+cnv.height = 512;
 document.body.appendChild(cnv);
 ctx.fillStyle = "#000000";
 ctx.font = "40px Arial";
 
-const SIZE = 50;
+const SIZE = cnv.height / (64 - 48);
+const midiRects = [];
 
-function background() {
-  ctx.clearRect(0, 0, 1300, 500);
-  for (let i = 1; i <= 5; i++) {
-    ctx.beginPath();
-    ctx.moveTo(50, SIZE * i);
-    ctx.lineTo(1000, SIZE * i);
-    ctx.closePath();
-    ctx.stroke();
-  }
-}
-
-const coins = [];
-const note = new Note();
 let ID;
 let time = performance.now();
+let prevPitch = -1;
 
 function loop() {
   ID = requestAnimationFrame(loop);
   const newTime = performance.now();
   const t = newTime - time;
   time = newTime;
-  console.log(currentPitch);
-  console.log(currentPitch);
-
-  for (let i = coins.length - 1; i >= 0; i--) {
-    if (coins[i].offscreen()) coins.splice(i, 1);
-  }
-
-  if (ID % 180 == 0) {
-    const noteIndex = Math.floor(Math.random() * 7);
-    coins.push(new Coin(noteIndex));
-  }
-
-  note.update();
 
   const midi = currentPitch;
+
+  for (let i = midiRects.length - 1; i >= 0; i--) {
+    if (midiRects[i].offscreen()) {
+      midiRects.splice(i, 1);
+    }
+  }
   
-  switch(midi) {
-  case 60: note.move(0); break;
-  case 62: note.move(1); break;
-  case 64: note.move(2); break;
-  case 65: note.move(3); break;
-  case 67: note.move(4); break;
-  case 69: note.move(5); break;
-  case 71: note.move(6); break;
+  if (ID % 8 == 0) {
+    if (midi > 0) {
+      midiRects.push(new midiRect(midi));
+    }
   }
 
-  background();
-
-  for (let coin of coins) {
-    coin.update();   
-    coin.draw(ctx);
+  for (rect of midiRects) {
+    rect.update();
+    rect.draw(ctx);
   }
-
-  note.draw(ctx);
 
   ctx.fillText(midi + " " + t, 20, 50);
 }
