@@ -1,5 +1,6 @@
 let audioContext;
 let sampleRate;
+let currentPitch;
 
 async function startAudio() {
 
@@ -30,7 +31,8 @@ async function startAudio() {
 
     const frequency = event.data;
 
-    console.log("frequency: ", frequency);
+    //console.log("frequency: ", frequency);
+    currentPitch = freqToMidi(frequency.frequency);
 };
 
 
