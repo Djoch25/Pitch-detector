@@ -10,7 +10,7 @@ class PitchProcessor extends AudioWorkletProcessor {
 
 
     process(inputs) {
-       this.port.postMessage("tk");
+       this.port.postMessage("tk3");
       return true;
       
         const input = inputs[0];
