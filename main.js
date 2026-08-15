@@ -12,6 +12,7 @@ const midiRects = [];
 let ID;
 let time = performance.now();
 let prevPitch = -1;
+let midi = -1;
 
 function loop() {
   ID = requestAnimationFrame(loop);
@@ -19,7 +20,7 @@ function loop() {
   const t = newTime - time;
   time = newTime;
 
-  const midi = currentPitch;
+  if (currentPitch !== NaN) {midi = currentPitch;}
 
   for (let i = midiRects.length - 1; i >= 0; i--) {
     if (midiRects[i].offscreen()) {
