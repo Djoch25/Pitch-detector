@@ -20,7 +20,7 @@ function loop() {
   const t = newTime - time;
   time = newTime;
 
-  if (currentPitch !== NaN) {midi = currentPitch;}
+  if (currentPitch) {midi = currentPitch;}
 
   for (let i = midiRects.length - 1; i >= 0; i--) {
     if (midiRects[i].offscreen()) {
